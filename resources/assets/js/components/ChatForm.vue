@@ -10,6 +10,12 @@
                 Enviar
             </button>
         </span>
+
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
     </div>
 </template>
 
@@ -20,59 +26,51 @@
         data() {
             return {
                 newMessage: '',
-                user: {},
                 errorss: {},
                 showMe: false,
                 loaded: false,
                 imagen: '',
+                avatar: ''
             }
         },
-
         methods: {
             sendMessage() {
+                $(".panel-body").animate({ scrollTop: 20000000 }, "slow");
                 //alert(this.avatar);
             this.$emit('messagesent', {
                     user: this.user,
                     message: this.newMessage,
+                    loading:true
                 });
                 this.newMessage = ''
             },
 
-            fetchMessages() {
-                axios.get('/messages').then(response => {
-                    this.messages = response.data;
-                });
-            },
-            addMessage(message) {
-                this.messages.push(message);
-                axios.post('/messages', message).then(response => {});
-            },
-        sendPostFileTo(e){
-
-        let imagen = e.target.files[0];
-        console.log(imagen);
-        var data = new  FormData();
-            //this.avatar = image;
-            //onsole.log(data);
-            data.append('user', this.user);
-            data.append('message', this.newMessage);
-            data.append('file', imagen);
-
-            console.log("------------------");
-            //console.log(this.imagen);
-            console.log("------------------");
-
-            axios.post('messages',data)
-                .then(response => {
-                    //this.$emit('messagesent', {
-                        //data,
-                    //});
-                })
-                //Añadimos la imagen seleccionada
-
-        //this.loaded = true;
-    }, 
-        }    
+            sendPostFileTo(e){
+                $(".panel-body").animate({ scrollTop: 20000000 }, "slow");
+                var image = e.target.files[0];
+                var reader = new FileReader();
+                var file_por_barra='';
+                var file_por_punto='';
+                reader.readAsDataURL(image);
+                reader.onload = e => {
+                    this.imagen = e.target.result;
+                    file_por_barra=this.imagen.split('/');
+                    file_por_punto=file_por_barra[0].split(':');
+                        this.$emit("messagesent",{
+                        path:this.imagen,
+                        type:file_por_punto[1],
+                        user: this.user,
+                        message: this.newMessage,
+                        name:image.name,
+                        loading:true,
+                    });
+                }
+                this.newMessage = ''
+            }, 
+        },    
+        mounted(){
+            $(".panel-body").animate({ scrollTop: 20000000 }, "slow");
+        }
     }
 </script>
 

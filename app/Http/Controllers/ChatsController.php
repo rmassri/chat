@@ -36,7 +36,7 @@ class ChatsController extends Controller
      */
     public function fetchMessages()
     {
-        return Message::with('user')->get();
+        return  Message::with('user')->get();
     }
 
     /**
@@ -49,24 +49,41 @@ class ChatsController extends Controller
     {
         $user = Auth::user();
         $path = '';
-        
-        if($request->file('file')!=false){
+        $type='';
+        if($request['path']!=false){
             $storage = \Storage::disk('public');
-            $file = $request->file('file');
+            $file = $request['path'];
+            $name =$request['name'];
+            $type_barra = explode('/', $file);
+            $type_punto = explode(':', $type_barra[0]);
+
+            if($type_punto[1]=='video'){
+                $type='video';
+            }else if($type_punto[1]=='application' || $type_punto[1]=='inode'){
+                $type='application';
+            }else{
+                $type='image';
+            }
+            $base64_str = substr($file, strpos($file, ",")+1);
+            $file = base64_decode($base64_str);
+            //dd($file);
+
             //$path ='/img/questions';
-            $fileName = uniqid().".". $file->getClientOriginalName();
-            $path ='file/'.$file->getClientOriginalName();
-            $storage->put($fileName, file_get_contents($file),'public');
+            $fileName = uniqid().".". $name;
+            $path = 'file/'.$fileName;
+            $storage->put($fileName, $file);
         }
         //dd($file);
         
         $message = $user->messages()->create([
             'message' => $request->input('message'),
-            'path' => $path 
+            'path' => $path,
+            'type' => $type 
         ]);
+
 
         broadcast(new MessageSent($user, $message))->toOthers();
 
-        return ['status' => 'Message Sent!'];
+        return ['status' => 'Message Sent!','message'=>$message];
     }
 }
