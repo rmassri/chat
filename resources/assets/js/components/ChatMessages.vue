@@ -19,11 +19,10 @@
                 </p>
                 <video width="450" height="480" controls :src="message.path" v-if="message.type!='' && message.type=='video'">
                 </video>
-                    <div v-if="message.type!='' && message.type=='application'" class="attach">
+                    <div v-if="message.type!='' && (message.type=='application' || message.type=='text')" class="attach">
                         <p>{{message.file}}</p>
                         <a :href="message.path" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i> Descargar</a>
                     </div>
-                
             </div>
         </li>
     </ul>

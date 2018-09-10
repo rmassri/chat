@@ -59,7 +59,7 @@ class ChatsController extends Controller
 
             if($type_punto[1]=='video'){
                 $type='video';
-            }else if($type_punto[1]=='application' || $type_punto[1]=='inode'){
+            }else if($type_punto[1]=='application' || $type_punto[1]=='inode' || $type_punto[1]=='text'){
                 $type='application';
             }else{
                 $type='image';

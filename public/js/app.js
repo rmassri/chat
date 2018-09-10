@@ -48439,7 +48439,7 @@ exports = module.exports = __webpack_require__(44)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48827,6 +48827,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['messages'],
@@ -48860,7 +48861,11 @@ var render = function() {
               )
             ])
           ]),
-          _vm._v(" "),
+          _vm._v(
+            "\n            -------------" +
+              _vm._s(message.type) +
+              "-----------\n            "
+          ),
           message.path == "" || message.path == null
             ? _c("p", [
                 _vm._v(
@@ -48903,7 +48908,8 @@ var render = function() {
               })
             : _vm._e(),
           _vm._v(" "),
-          message.type != "" && message.type == "application"
+          message.type != "" &&
+          (message.type == "application" || message.type == "text")
             ? _c("div", { staticClass: "attach" }, [
                 _c("p", [_vm._v(_vm._s(message.file))]),
                 _vm._v(" "),
