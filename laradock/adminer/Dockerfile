@@ -8,6 +8,7 @@ LABEL maintainer="Patrick Artounian <partounian@gmail.com>"
 # Add volume for sessions to allow session persistence
 VOLUME /sessions
 
+
 #####################################
 # SQL SERVER:
 #####################################
