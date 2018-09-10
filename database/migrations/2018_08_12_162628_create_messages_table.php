@@ -12,6 +12,7 @@ public function up()
      $table->increments('id');
      $table->text('message')->nullable();
      $table->string('path')->nullable();
+     $table->string('type')->nullable();
      $table->integer('user_id')->unsigned();
      $table->foreign('user_id')->references('id')->on('users');
      $table->timestamps();

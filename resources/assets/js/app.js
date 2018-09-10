@@ -20,7 +20,8 @@ const app = new Vue({
     el: '#app',
     
     data: {
-        messages: []
+        messages: [],
+        loading:false
     },
 
 
@@ -28,10 +29,13 @@ const app = new Vue({
         this.fetchMessages();
         Echo.private('chat')
             .listen('MessageSent', (e) => {
-                console.log("Esta es la respuesta de la e",e);
+                //console.log("Esta es la respuesta de la e",e);
                 this.messages.push({
                     message: e.message.message,
-                    user: e.user
+                    user: e.user,
+                    path: e.message.path,
+                    type: e.message.type,
+                    loading:true,
                 });
             });
     },
@@ -39,12 +43,25 @@ const app = new Vue({
     methods: {
         fetchMessages() {
             axios.get('/messages').then(response => {
+                console.log("------------------------");
+                console.log(this.messages);
+                console.log("------------------------");
                 this.messages = response.data;
+                //this.loading = true;
             });
         },
         addMessage(message) {
+            var loading = true;
+            //console.log("...................");
+            //console.log(message);
+            //console.log("...................");
+            //this.messages.push(loading);
             this.messages.push(message);
-            axios.post('/messages', message).then(response => {});
+            axios.post('/messages', message).then(response => {
+                console.log("===========================");
+                console.log(this.messages);
+                console.log("===========================");
+            });
         }
     }
 });
