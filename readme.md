@@ -62,6 +62,7 @@
 14.install packages
 	composer install
 	npm install
+	php artisan key:generate
 
 15. We create the database called chat
 
