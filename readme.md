@@ -15,63 +15,71 @@
 4. Set the repository
 
 	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-
+	
 5. Install Docker CE
 	
 	sudo apt-get update
 	sudo apt-get install docker-ce -y
  
-6. permits to /usr/local/bin
-
+6. permits to /usr/local/bin and import package
+	
+	curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" > ./docker		compose
+	
 	sudo chown -R $(whoami) /usr/local/bin
+	
+	sudo apt-get update
 
-7. import package
-
-	curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-
-8. Install docker-compose
+7. Install docker-compose
 
 	apt-get install docker-compose
 
-9. Add sudoer user for docker
+8. Add sudoer user for docker
 	
 	sudo groupadd docker
 	sudo gpasswd -a $USER docker
 	sudo usermod -aG docker $USER
   
-10. we close the session in the account so that the user has the permissions
+9. we close the session in the account so that the user has the permissions
 
-11 The database server must be turned off or stopped and apache if used.
+10 The database server must be turned off or stopped and apache if used.
 
 	/etc/init.d/apache2 stop
 
 	/etc/init.d/mysql stop
 
-12. Locate yourself in the project's root directory
+11. Locate yourself in the project's root directory
 
 	laravel-chat/laradoc
 
-13. Execute the command.
+12. Execute the command.
 
-	docker-compose up
+	docker-compose up -d nginx mysql
+	
+	
+13. We create the database called chat
 
-14. Execute the command
-
-	docker-compose exec workspace bash
-
-15. We create the database called chat
+	docker-compose exec mysql mysql -h localhost -u root -p
+	
+	clave:root
 
 	create database chat;
 
-16. Salimos de mysql.
+14. Salimos de mysql.
 
 	exit;
 
-17 Run the migrations
+15. Execute the command
 
+	docker-compose exec workspace bash
+	
+16.install packages
+	composer install
+	npm install
+	php artisan key:generate
 	php artisan migrate
 
-18 open the browser and run localhost
+
+17 open the browser and run localhost
 
 Nota: In case of having a window we must download it in the following way
 
