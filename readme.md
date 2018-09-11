@@ -1,31 +1,81 @@
-En primer lugar se debe apagar o detener el servidor de base de datos y apache en caso de usarlo.
+##Instalar Docker
 
-En linux apache /etc/init.d/apache2 stop
+1. Update the apt package index:
+	
+	sudo apt-get update
 
-mysql /etc/init.d/mysql stop
+2. Install packages to allow apt to use a repository over HTTPS:
 
-Paso numero 1
+	sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
 
-Ubicarse en el directorio rais del proyecto(laravel-chat/laradoc)
+3. Add Docker’s official GPG key:
 
-paso numero 2
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-Ejecutar el comando
+4. Set the repository
+
+	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+5. Install Docker CE
+	
+	sudo apt-get update
+	sudo apt-get install docker-ce -y
+ 
+6. permits to /usr/local/bin
+
+sudo chown -R $(whoami) /usr/local/bin
+
+7. import package
+
+curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+
+8. Install docker-compose
+
+apt-get install docker-compose
+
+9. Add sudoer user for docker
+	
+	sudo groupadd docker
+	sudo gpasswd -a $USER docker
+	sudo usermod -aG docker $USER
+  
+10. we close the session in the account so that the user has the permissions
+
+
+11 The database server must be turned off or stopped and apache if used.
+
+/etc/init.d/apache2 stop
+
+/etc/init.d/mysql stop
+
+12. Locate yourself in the project's root directory (laravel-chat/laradoc)
+
+13. Execute the command.
 
 docker-compose up
 
-Paso numero 3
-
-Ejecutar el comando
+14. Execute the command
 
 docker-compose exec workspace bash
 
-Paso numero 3
+15. We create the database called chat
 
-Correr las migraciones
+create database chat;
+
+16. Salimos de mysql.
+
+exit;
+
+15 Run the migrations
 
 php artisan migrate
 
-Paso numero 4
+16 open the browser and run localhost
 
-abrir el nvegador y ejecutar localhost
+
+Nota: In case of having a window we must download it in the following way
+
+https://docs.docker.com/toolbox/overview/#whats-in-the-box
+
+
+
