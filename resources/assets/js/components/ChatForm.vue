@@ -32,18 +32,24 @@
                 avatar: ''
             }
         },
+
         methods: {
             sendMessage() {
+                var dateTime = new Date();
+                var getDateTime = dateTime.getFullYear()+'-'+dateTime.getMonth()+'-'+dateTime.getDate()+' '+dateTime.getHours()+':'+dateTime.getMinutes()+':'+dateTime.getSeconds();
                 $(".panel-body").animate({ scrollTop: 20000000 }, "slow");
                 this.$emit('messagesent', {
                         user: this.user,
                         message: this.newMessage,
-                        loading:true
+                        loading:true,
+                        created_at:getDateTime
                     });
                     this.newMessage = ''
                 },
 
             sendPostFileTo(e){
+                var dateTime = new Date();
+                var getDateTime = dateTime.getFullYear()+'-'+dateTime.getMonth()+'-'+dateTime.getDate()+' '+dateTime.getHours()+':'+dateTime.getMinutes()+':'+dateTime.getSeconds();
                 $(".panel-body").animate({ scrollTop: 20000000 }, "slow");
                 var image = e.target.files[0];
                 var reader = new FileReader();
@@ -61,6 +67,8 @@
                         message: this.newMessage,
                         name:image.name,
                         loading:true,
+                        created_at:getDateTime
+
                     });
                 }
                 this.newMessage = ''
