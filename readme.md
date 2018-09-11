@@ -58,6 +58,10 @@
 13. Execute the command
 
 	docker-compose exec workspace bash
+	
+14.install packages
+	composer install
+	npm install
 
 14. We create the database called chat
 
