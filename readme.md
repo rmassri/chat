@@ -63,19 +63,19 @@
 	composer install
 	npm install
 
-14. We create the database called chat
+15. We create the database called chat
 
 	create database chat;
 
-15. Salimos de mysql.
+16. Salimos de mysql.
 
 	exit;
 
-16 Run the migrations
+17 Run the migrations
 
 	php artisan migrate
 
-17 open the browser and run localhost
+18 open the browser and run localhost
 
 Nota: In case of having a window we must download it in the following way
 
