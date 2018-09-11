@@ -66,6 +66,10 @@
 
 15. We create the database called chat
 
+	docker-compose exec mysql mysql -h localhost -u root -p
+	
+	clave:root
+
 	create database chat;
 
 16. Salimos de mysql.
