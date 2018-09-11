@@ -54,17 +54,9 @@
 12. Execute the command.
 
 	docker-compose up -d nginx mysql
-
-13. Execute the command
-
-	docker-compose exec workspace bash
 	
-14.install packages
-	composer install
-	npm install
-	php artisan key:generate
-
-15. We create the database called chat
+	
+13. We create the database called chat
 
 	docker-compose exec mysql mysql -h localhost -u root -p
 	
@@ -72,15 +64,22 @@
 
 	create database chat;
 
-16. Salimos de mysql.
+14. Salimos de mysql.
 
 	exit;
 
-17 Run the migrations
+15. Execute the command
 
+	docker-compose exec workspace bash
+	
+16.install packages
+	composer install
+	npm install
+	php artisan key:generate
 	php artisan migrate
 
-18 open the browser and run localhost
+
+17 open the browser and run localhost
 
 Nota: In case of having a window we must download it in the following way
 
