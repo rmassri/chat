@@ -22,7 +22,6 @@
 <script>
     export default {
         props: ['user'],
-
         data() {
             return {
                 newMessage: '',
@@ -36,14 +35,13 @@
         methods: {
             sendMessage() {
                 $(".panel-body").animate({ scrollTop: 20000000 }, "slow");
-                //alert(this.avatar);
-            this.$emit('messagesent', {
-                    user: this.user,
-                    message: this.newMessage,
-                    loading:true
-                });
-                this.newMessage = ''
-            },
+                this.$emit('messagesent', {
+                        user: this.user,
+                        message: this.newMessage,
+                        loading:true
+                    });
+                    this.newMessage = ''
+                },
 
             sendPostFileTo(e){
                 $(".panel-body").animate({ scrollTop: 20000000 }, "slow");

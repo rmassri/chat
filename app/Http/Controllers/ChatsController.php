@@ -66,14 +66,10 @@ class ChatsController extends Controller
             }
             $base64_str = substr($file, strpos($file, ",")+1);
             $file = base64_decode($base64_str);
-            //dd($file);
-
-            //$path ='/img/questions';
             $fileName = uniqid().".". $name;
             $path = 'file/'.$fileName;
             $storage->put($fileName, $file);
         }
-        //dd($file);
         
         $message = $user->messages()->create([
             'message' => $request->input('message'),
