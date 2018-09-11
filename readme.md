@@ -23,15 +23,15 @@
  
 6. permits to /usr/local/bin
 
-sudo chown -R $(whoami) /usr/local/bin
+	sudo chown -R $(whoami) /usr/local/bin
 
 7. import package
 
-curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+	curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 
 8. Install docker-compose
 
-apt-get install docker-compose
+	apt-get install docker-compose
 
 9. Add sudoer user for docker
 	
@@ -41,41 +41,41 @@ apt-get install docker-compose
   
 10. we close the session in the account so that the user has the permissions
 
-
 11 The database server must be turned off or stopped and apache if used.
 
-/etc/init.d/apache2 stop
+	/etc/init.d/apache2 stop
 
-/etc/init.d/mysql stop
+	/etc/init.d/mysql stop
 
-12. Locate yourself in the project's root directory (laravel-chat/laradoc)
+12. Locate yourself in the project's root directory
+
+	laravel-chat/laradoc
 
 13. Execute the command.
 
-docker-compose up
+	docker-compose up
 
 14. Execute the command
 
-docker-compose exec workspace bash
+	docker-compose exec workspace bash
 
 15. We create the database called chat
 
-create database chat;
+	create database chat;
 
 16. Salimos de mysql.
 
-exit;
+	exit;
 
-15 Run the migrations
+17 Run the migrations
 
-php artisan migrate
+	php artisan migrate
 
-16 open the browser and run localhost
-
+18 open the browser and run localhost
 
 Nota: In case of having a window we must download it in the following way
 
-https://docs.docker.com/toolbox/overview/#whats-in-the-box
+	https://docs.docker.com/toolbox/overview/#whats-in-the-box
 
 
 
