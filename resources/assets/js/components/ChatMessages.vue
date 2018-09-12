@@ -13,7 +13,9 @@
                     {{message.created_at}}
                 </p>
                 <p v-if="message.type!='' && message.type=='image'">
-                    <img :src="message.path" width="20%" height="20%">
+                    <a :href="message.path" target="_blank">
+                        <img :src="message.path" width="20%" height="20%">
+                    </a>
                     <br>
                     {{message.created_at}} 
                 </p>
