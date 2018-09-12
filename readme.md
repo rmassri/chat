@@ -4,8 +4,10 @@ public chat in laravel
 
 1.Clone this repository
    *   `git clone https://github.com/rmassri/laravel-chat.git`
+   
 2.access the project folder
    *    `cd ./laravel-chat`
+   
 3.Execute the command.
    *   `docker-compose up -d nginx mysql`
 4.access the project folder
