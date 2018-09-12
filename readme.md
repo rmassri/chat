@@ -8,12 +8,12 @@ public chat in laravel
 2.access the project folder
    *    `cd ./laravel-chat`
    
-3.Execute the command.
-   *   `docker-compose up -d nginx mysql`
+3.access the project folder
+   *   `cd ./laravel-chat/laradoc`
    
-4.access the project folder
-   *   `cd ./laradoc
-   `
+4.Execute the command.
+   *   `docker-compose up -d nginx mysql`
+  
 5. install packages
    *   `docker-compose exec workspace composer install`
    *   `docker-compose exec workspace npm install`
