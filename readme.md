@@ -1,5 +1,14 @@
 # **Docker and docker-compose must be installed** #
 
+## Descargar docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+## Establecer los servicios
+sudo chmod +x /usr/local/bin/docker-compose
+
+## Verificar la versión instalada
+docker-compose --version
+
 public chat in laravel
 
 1.Clone this repository
