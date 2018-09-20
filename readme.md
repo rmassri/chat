@@ -34,5 +34,13 @@ public chat in laravel
 >   **Nota:** In case of having a window we must download it in the following way
 >   https://docs.docker.com/toolbox/overview/#whats-in-the-box
 
+
+Nota. Ante el error de permisos. En vista que se creo la base de datos sin pemiso. Ejecutar los sigientes comando.
+
+docker-compose up -d mysql
+docker-compose start
+docker-compose exec mysql mysql -uroot -proot
+drop database chat;
+create database chat;
 	
 	
