@@ -36,11 +36,13 @@ public chat in laravel
 
 
 Nota. Ante el error de permisos. En vista que se creo la base de datos sin pemiso. Ejecutar los sigientes comando.
-
+`cd ./laravel-chat/laradoc`
 docker-compose up -d mysql
 docker-compose start
 docker-compose exec mysql mysql -uroot -proot
 drop database chat;
 create database chat;
+exit;
+docker-compose exec workspace php artisan migrate
 	
 	
