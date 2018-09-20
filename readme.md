@@ -43,6 +43,6 @@ docker-compose exec mysql mysql -uroot -proot
 drop database chat;
 create database chat;
 exit;
-docker-compose exec workspace php artisan migrate
+docker-compose exec workspace php artisan migrate;
 	
 	
